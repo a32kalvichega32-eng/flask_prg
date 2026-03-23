@@ -1,22 +1,6 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template
 
 app = Flask(__name__)
-
-html_page = '''
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Привет, Марс!</title>
-</head>
-<body>
-    <h1>Жди нас, Марс!</h1>
-    <!-- Здесь должна быть ссылка на картинку -->
-    <img src="https://img.freepik.com/premium-psd/3d-mars-planet-isolated-white-background_1314158-4877.jpg?semt=ais_hybrid&w=740" alt="Марсианский пейзаж"/>
-    <p>:Это Марс. Круто не так ли?.</p>
-</body>
-</html>
-'''
 
 @app.route('/')
 def mission():
@@ -34,9 +18,9 @@ def promotion():
 И начнем с Марса!<br>
 Присоединяйся!"""
 
-@app.route('/image_mars')
+@app.route('/promotion_image')
 def image_mars():
-    return render_template_string(html_page)
+    return render_template('index.html', title='Домашняя страница')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
